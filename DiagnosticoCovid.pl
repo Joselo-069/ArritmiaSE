@@ -8,56 +8,22 @@
 
 %   Conjunto de imagenes a utilizar
 
-resource(fondo,image,image('Vacuna1.jpg')).
-resource(fondo2,image,image('fondo-corazon.jpg')).
-resource(fondoMedidas,image,image('protocolo-Fondo2.jpg')).
+resource(fondo,image,image('fondo-presentacion.jpg')).
+resource(fondo2,image,image('fondo-corazon1.jpg')).
+resource(fondoMedidas,image,image('sugerencias2.jpg')).
 resource(fondoPreguntas,image,image('f_preguntas.jfif')).
-resource(fondoLavadoManos,image,image('f_prevenicion.jpeg')).
+resource(fondoLavadoManos,image,image('prevencion.jpg')).
 resource(fondoDistanciamiento,image,image('fondo-Distanciamiento.jpg')).
 resource(fondoMascarilla,image,image('recomendaciones1.jpg')).
 resource(fondoGel,image,image('fondo-Gel.jpg')).
 resource(fondoIntegrantes,image,image('fondo-Integrantes.jpg')).
-resource(logoisi,image,image('LogoISI.jpg')).
-resource(logounasam,image,image('LogoUnasam.jpg')).
+%resource(logoisi,image,image('LogoISI.jpg')).
+%resource(logounasam,image,image('LogoUnasam.jpg')).
 resource(iconoSalir,image,image('salir.gif')).
 resource(iconoIniciar,image,image('check.jpg')).
 resource(iconoSiguiente,image,image('IconSiguiente.jpg')).
 resource(iconoAtras,image,image('iconoAtras.jpg')).
 resource(iconoIntegrantes,image,image('integrantes.jpg')).
-
-%%%%Imagenes para las preguntas
-
-/*resource(fiebreMayor37,image,image('fiebreMayor37.jpg')).
-resource(ninoDolorGarganta,image,image('niñoDolorGarganta.jpg')).
-resource(ninosConjuntivitis,image,image('niñosConjuntivitis.jpg')).
-resource(ninosDiarrea,image,image('niñosDiarrea.jpg')).
-resource(ninosDolorCabeza1,image,image('niñosDolorCabeza1.jpg')).
-resource(ninosPerdidaGusto,image,image('niñosPerdidaGusto.jpg')).
-resource(ninosPerdidaOlfato,image,image('niñosPerdidaOlfato.jpg')).
-resource(ninosProblemaRespiracion,image,image('niñosProblemaRespiracion.jpg')).
-resource(ninosTosSeca,image,image('niñosTosSeca.jpg')).
-resource(ninofiebre,image,image('niñofiebre.jpg')).
-resource(ninosEscalofrio,image,image('niñosEscalofrio.jpg')).
-resource(ninosDolorMuscular,image,image('niñosDolorMuscular.jpg')).
-resource(ninoDolorGarganta2,image,image('niñoDolorGarganta2.jpg')).
-resource(ninosGoteoNasal,image,image('niñosGoteoNasal.jpg')).
-resource(ninosTos,image,image('niñosTos.jpg')).
-resource(ninosSinApetito,image,image('niñosSinApetito.jpg')).
-resource(ninosCansado,image,image('niñosCansado.jpg')).
-resource(ninosCosquilleoGarganta,image,image('niñosCosquilleoGarganta.jpg')).
-resource(ninosCongestion,image,image('niñosCongestion.jpg')).
-resource(ninosEstornudo,image,image('niñosEstornudo.jpg')).
-resource(ninosBuenApetito,image,image('niñosBuenApetito.jpg')).
-resource(ninofiebreBaja,image,image('niñofiebreBaja.jpg')).
-resource(ninosBuenaEnergia,image,image('niñosBuenaEnergia.jpg')).*/
-
-
-/*nueva_imagen(Ventana, Imagen):-new(Figura, figure),
-                                new(Bitmap, bitmap(resource(Imagen),@on)),     %On ---> Transparencia
-                                send(Bitmap, name, 1),
-                                send(Figura, display, Bitmap),
-                                send(Figura, status, 1),
-                                send(Ventana, display,Figura,point(0,0)).  */
 
 % Método para cargar imagenes
 nueva_imagen(Ventana, Imagen, Posicion):-new(Figura,  figure),
@@ -66,30 +32,25 @@ nueva_imagen(Ventana, Imagen, Posicion):-new(Figura,  figure),
                                                  send(Figura, display, Bitmap),
                                                  send(Figura, status, 1),
                                                  send(Ventana, display, Figura, Posicion).
-
+                                                 
 % Metodo principal para iniciar la interfaz grafica, declaracion de
 % botones, labels, y la pocicion en pantalla.
 
-
 ventana_inicio:- new(D,dialog('Bienvenido al Sistema Experto Diagnosticador de Arritmias Cardicas')),
-
           new(Texto1,label(name,'SISTEMA EXPERTO DIAGNOSTICO DE ARRITMIA CARDIACAS',font('arial','bold',18))),
           new(Texto2,label(name,'SISTEMA EXPERTO DIAGNOSTICO DE ARRITMIA CARDIACAS',font('arial','bold',18))),
           new(Texto3,label(name,'    UNIVERSIDAD NACIONAL SANTIAGO\n                  ANTUNEZ DE MAYOLO \n\n\n\n\n
                 FACULTAD DE CIENCIAS \n ESCUELA  PROFESIONAL DE INGENIERIA \n          DE SISTEMAS E INFORMÁTICA',font('arial','bold',20))),
           new(Texto4,label(name,'    UNIVERSIDAD NACIONAL SANTIAGO\n                  ANTUNEZ DE MAYOLO \n\n\n\n\n
                 FACULTAD DE CIENCIAS \n ESCUELA  PROFESIONAL DE INGENIERIA \n          DE SISTEMAS E INFORMÁTICA',font('arial','bold',20))),
-
           new(BtnIniciar,button('INICIAR ____',and(message(@prolog,ventana_principal),message(D,destroy)))),
           new(BtnSalir1,button('SALIR____',and(message(D,destroy)))),
-          new(BtnIntegrantes,button('INTEGRANTES_______',message(@prolog,ventana_Integrantes))),
+          %new(BtnIntegrantes,button('INTEGRANTES_______',message(@prolog,ventana_Integrantes))),
           
           nueva_imagen(D,fondo,point(0,0)),
-          nueva_imagen(D,logounasam,point(185,160)),
-          nueva_imagen(D,logoisi,point(420,160)),
+          %nueva_imagen(D,logounasam,point(185,160)),
+          %nueva_imagen(D,logoisi,point(420,160)),
           
-
-
           send(D,display,Texto1,point(60,29)),
           send(D,display,Texto2,point(63,30)),
           send(Texto1,colour(darkred)),
@@ -109,21 +70,19 @@ ventana_inicio:- new(D,dialog('Bienvenido al Sistema Experto Diagnosticador de A
           nueva_imagen(D,iconoSalir,point(420,395)),
           send(BtnSalir1,font(bold)),
           
-          send(D,display,BtnIntegrantes,point(290,428)),
-          nueva_imagen(D,iconoIntegrantes,point(390,430)),
-          send(BtnIntegrantes,font(bold)),
+          %send(D,display,BtnIntegrantes,point(290,428)),
+          %nueva_imagen(D,iconoIntegrantes,point(390,430)),
+          %send(BtnIntegrantes,font(bold)),
           
           send(D,height(450)),
           send(D,width(720)),
           send(D,open_centered).
           :-ventana_inicio.
           
-          
-          
 %%%%%%%%%%%%%%%%%%%%%%%%%%   INTEGRANTES         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 ventana_Integrantes:-new(DIntegrantes,dialog('Integrantes')),
-                     new(TxtIntTitulo,label(name,'INTEGRANTES',font('arial','bold',12))),
+                     new(TxtIntTitulo,label(name,'GRUPO Nº 1',font('arial','bold',12))),
                      new(TxtIntTexto,label(name,'                     1. Ayala Flores Leo \n
                      2. Maguiña Chavez Nastasha \n
                      3. Melgarejo Príncipe Jescenia \n
@@ -150,21 +109,20 @@ ventana_Integrantes:-new(DIntegrantes,dialog('Integrantes')),
 
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Menu Principal %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 ventana_principal:- new(MAIN,dialog('Bienvenido al Sistema Experto Diagnosticador de Arritmias Cardiacas')),
 
           new(Texto1,label(name,'SISTEMA EXPERTO - DIAGNOSTICO DE ARRITMIAS CARDIACAS',font('arial','bold',20))),
           new(Texto2,label(name,'SISTEMA EXPERTO - DIAGNOSTICO DE ARRITMIAS CARDIACAS',font('arial','bold',20))),
           new(@txt1,label(name,'ARRITIMIAS CARDIACAS',font('arial','bold',14))),
-          new(@txt2,label(name,'            \n"DIA MUNDIAL DEL CORAZON - 29 DE SEPTIEMBRE " \nLe pedimos que use el corazón para vencer las enfermedades \ncardiacas. Por la sociedad, por tus seres queridos y por ti.',font('arial','bold',12))),
+          new(@txt2,label(name,'                    \n"DIA MUNDIAL DEL CORAZON - 29 DE SEPTIEMBRE " \nLe pedimos que use el corazón para vencer las enfermedades cardiacas. Por la sociedad, por tus seres queridos \ny por ti.',font('arial','bold',12))),
           new(BtnConsultaGeneral,button('CONSULTA GENERAL__________________',message(@prolog,botones2))),
-          new(BtnConsultaNinos,button('TIPO DE ARRITMIA ____________________',message(@prolog,botones))),
-          %new(BtnPrevencion,button('GRAVEDAD ENFERMEDAD________________',message(@prolog,botones3))),
+          %new(BtnConsultaNinos,button('TIPO DE ARRITMIA ____________________',message(@prolog,botones))),
+          new(BtnPrevencion,button('TIPO DE ARRITMIA ____________________',message(@prolog,botones3))),
           new(BtnProtocolo,button('SUGERENCIAS___________________________',and(message(@prolog,ventana_medidasBioseg_principal),message(MAIN,destroy),
           message(@txt1,free),message(@txt2,free)))),
           new(BtnSalir2,button('SALIR_________________________________________',and(message(MAIN,destroy)))),
-
 
           nueva_imagen(MAIN,fondo2,point(0,0)),
 
@@ -173,45 +131,43 @@ ventana_principal:- new(MAIN,dialog('Bienvenido al Sistema Experto Diagnosticado
           send(Texto1,colour(darkred)),
           send(Texto2,colour(white)),
 
-
-          send(MAIN,display,@txt1,point(350,105)),
-          send(MAIN,display,@txt2,point(350,130)),
+          send(MAIN,display,@txt1,point(320,105)),
+          send(MAIN,display,@txt2,point(50,130)),
           send(@txt1,colour(white)),
           send(@txt2,colour(white)),
           
           %boton consulta general
-          send(MAIN,display,BtnConsultaGeneral,point(50,130)),
-          nueva_imagen(MAIN,iconoIniciar,point(240,131)),
+          send(MAIN,display,BtnConsultaGeneral,point(30,240)),
+          nueva_imagen(MAIN,iconoIniciar,point(220,242)),
           send(BtnConsultaGeneral,font(bold)),
           
           %boton tipo de arritmia
-          send(MAIN,display,BtnConsultaNinos,point(50,205)),
-          nueva_imagen(MAIN,iconoIniciar,point(240,207)),
-          send(BtnConsultaNinos,font(bold)),
+          %send(MAIN,display,BtnConsultaNinos,point(50,205)),
+          %nueva_imagen(MAIN,iconoIniciar,point(240,207)),
+          %send(BtnConsultaNinos,font(bold)),
 
-          %send(MAIN,display,BtnPrevencion,point(50,230)),
-          %nueva_imagen(MAIN,iconoIniciar,point(240,230)),
-          %send(BtnPrevencion,font(bold)),
+          %boton tipo de arritmia
+          send(MAIN,display,BtnPrevencion,point(280,240)),
+          nueva_imagen(MAIN,iconoIniciar,point(472,242)),
+          send(BtnPrevencion,font(bold)),
 
           %boton de sugerecias
-          send(MAIN,display,BtnProtocolo,point(50,280)),
-          nueva_imagen(MAIN,iconoIniciar,point(240,282)),
+          send(MAIN,display,BtnProtocolo,point(530,240)),
+          nueva_imagen(MAIN,iconoIniciar,point(720,242)),
           send(BtnProtocolo,font(bold)),
 
-          send(MAIN,display,BtnSalir2,point(50,355)),
-          nueva_imagen(MAIN,iconoSalir,point(242,358)),
+          %boton de sugerecias
+          send(MAIN,display,BtnSalir2,point(30,520)),
+          nueva_imagen(MAIN,iconoSalir,point(225,522)),
           send(BtnSalir2,colour(red)),
           send(BtnSalir2,font(bold)),
           
-
           send(MAIN,height(550)),
           send(MAIN,width(800)),
           send(MAIN,open_centered).
           
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%           VENTANA PARA PROTOCOLO BIOSEGURIDAD  %%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%    VENTANA DE SUGERENCIAS  %%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 ventana_medidasBioseg_principal:-new(Dprotocolo,dialog('Sugerencias')),
                    %new(TxtMedTitulo,label(name,'PROTOCOLOS DE BIOSEGURIDAD',font('arial','bold',16))),
@@ -235,11 +191,11 @@ ventana_medidasBioseg_principal:-new(Dprotocolo,dialog('Sugerencias')),
                    %send(BtnMedDistancia,font(bold)),
                    %send(Dprotocolo,display,BtnGel,point(40,460)),
                    %send(BtnGel,font(bold)),
-                   send(Dprotocolo,display,BtnVolverInicio,point(10,50)),
+                   send(Dprotocolo,display,BtnVolverInicio,point(45,50)),
                    send(BtnVolverInicio,font(bold)),
                    send(BtnVolverInicio,colour(black)),
                    
-                   nueva_imagen(Dprotocolo,iconoSalir,point(12,52)),
+                   nueva_imagen(Dprotocolo,iconoSalir,point(45,52)),
                    
                    nueva_imagen(Dprotocolo,iconoIniciar,point(217,201)),
                    nueva_imagen(Dprotocolo,iconoIniciar,point(217,301)),
@@ -249,10 +205,7 @@ ventana_medidasBioseg_principal:-new(Dprotocolo,dialog('Sugerencias')),
                    send(Dprotocolo,height(550)),
                    send(Dprotocolo,width(800)),
                    send(Dprotocolo,open_centered).
-                   
-                   
-                   
-%CORRECTO LAVADO DE MANO - PREVENCION
+%PREVENCION
 
 ventana_lavadoMano:-new(DLavadoMano,dialog('Lavado correcto de las manos')),
                     new(BtnVolverInicio2,button('______VOLVER',and(message(@prolog,ventana_medidasBioseg_principal),message(DLavadoMano,destroy)))),
@@ -261,23 +214,21 @@ ventana_lavadoMano:-new(DLavadoMano,dialog('Lavado correcto de las manos')),
                     
                     send(DLavadoMano,display,BtnVolverInicio2,point(70,513)),
                     nueva_imagen(DLavadoMano,iconoAtras,point(75,515)),
-
                     
                     send(DLavadoMano,width(800)),
                     send(DLavadoMano,height(550)),
                     send(DLavadoMano,open_centered).
                     
                     
-%CORRECTO DISTANCIAMIENTO SOCIAL - RECOMENDACIONES
+%RECOMENDACIONES
 
 ventana_Distanciamiento:-new(Ddistanciamiento,dialog('Correcto Distanciamiento')),
                     new(BtnVolverInicio3,button('______VOLVER',and(message(@prolog,ventana_medidasBioseg_principal),message(Ddistanciamiento,destroy)))),
-
+                    
                     nueva_imagen(Ddistanciamiento,fondoDistanciamiento,point(0,0)),
 
                     send(Ddistanciamiento,display,BtnVolverInicio3,point(70,513)),
                     nueva_imagen(Ddistanciamiento,iconoAtras,point(75,515)),
-
 
                     send(Ddistanciamiento,width(800)),
                     send(Ddistanciamiento,height(550)),
@@ -288,13 +239,12 @@ ventana_Distanciamiento:-new(Ddistanciamiento,dialog('Correcto Distanciamiento')
 
 ventana_usoMascarilla:-new(DUsoMascarilla,dialog('Correcto Distanciamiento')),
                     new(BtnVolverInicio3,button('______VOLVER',and(message(@prolog,ventana_medidasBioseg_principal),message(DUsoMascarilla,destroy)))),
-
+                    
                     nueva_imagen(DUsoMascarilla,fondoMascarilla,point(0,0)),
 
                     send(DUsoMascarilla,display,BtnVolverInicio3,point(70,513)),
                     nueva_imagen(DUsoMascarilla,iconoAtras,point(75,515)),
-
-
+                    
                     send(DUsoMascarilla,width(800)),
                     send(DUsoMascarilla,height(550)),
                     send(DUsoMascarilla,open_centered).
@@ -309,15 +259,11 @@ ventana_usoGel:-new(DUsoGel,dialog('Correcto Distanciamiento')),
                     send(DUsoGel,display,BtnVolverInicio3,point(70,513)),
                     nueva_imagen(DUsoGel,iconoAtras,point(75,515)),
 
-
                     send(DUsoGel,width(800)),
                     send(DUsoGel,height(550)),
                     send(DUsoGel,open_centered).
                                  
-
-
-%DIAGNOSTICO a la enfermedad  Niños
-
+%DIAGNOSTICO DE TIPO DE ARRITMIA CARDIACA
 
 enfermedad_ninos('PELIGRO su hijo padece de COVID-19'):-covid,!.
 
@@ -336,28 +282,20 @@ un establecimiento de salud para descartar
 indicios de la COVID 19').
 
 
+%DIAGNOSTICO GENERAL
 
-%DIAGNOSTICO a la COVID19 - GENERAL
+covid_general('\nPELIGRO!!! Usted padece de Arritmias Cardiaca'):-genSiCovid,!.
 
-
-covid_general('PELIGRO!!! usted padece de Arritmia Cardiaca'):-genSiCovid,!.
-
-covid_general('No tiene ARRITMIA CARDIACA pero de presentar
-algunas de los sintomas,se recomienda
-que visite a un establecimiento de salud
-para descartar indicios de la ARRITMIA CARDIACA').
+covid_general('\nNO PRESENTA PROBLEMAS ARRITMÍCOS, pero si continúa con algunos de los síntomas mencionados, se recomienda
+acercarse a un centro de salud para la realización de una prueba EGC, ecocardiograma o un EEF, para descartar
+alguna complicación.').
 
 
 %DIAGNOSTICO GRAVEDAD - COVID19
 
-/*   FUENTE DE LA INFORMACIÓN
-https://www.msdmanuals.com/es-pe/professional/enfermedades-infecciosas/virus-
-respiratorios/coronavirus-y-s%C3%ADndromes-respiratorios-agudos-covid-19-mers-y-sars*/
-
-
 gravedad_covid('CUIDADO!! TIENE UNA ENFERMEDAD LEVE,
-si está en casa se recomienda visitar
-a un especialista o un establecimineto más
+si está en casa se recomienda
+visitar a un especialista o un establecimineto más
 cercano.'):-covidLeve,!.
 
 gravedad_covid('ADVERTENCIA!! TIENE UNA ENFERMEDAD MODERADA'):-covidModerada,!.
@@ -370,41 +308,6 @@ gravedad_covid('De  haber presentado
 algunas de los sintomas,se recomienda
 que visite a un establecimiento de salud
 para su debido tratamiento').
-
-/*
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%Imagenes con preguntas%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%Diagnostico COVID - Niños%%%%
-id_imagen_preg('¿Tiene fiebre más de 37 grados?','fiebreMayor37').
-id_imagen_preg('¿Tiene dolor de cabeza?','ninosDolorCabeza1').
-id_imagen_preg('¿Tiene dolor de garganta?','ninoDolorGarganta2').
-id_imagen_preg('¿Tiene problemas de respiración?','ninosProblemaRespiracion').
-id_imagen_preg('¿Siente perdida del sentido del gusto?','ninosPerdidaGusto').
-id_imagen_preg('¿Siente perdida del sentido del olfato?','ninosPerdidaOlfato').
-id_imagen_preg('¿Tiene diarrea?','ninosDiarrea').
-id_imagen_preg('¿Tiene tos seca?','ninosTosSeca').
-id_imagen_preg('¿Tiene conjuntivitis?','ninosConjuntivitis').
-
-%%%Diagnostico GRIPE - Niños%%%%
-
-id_imagen_preg('¿Siente escalofrios?','ninosEscalofrio').
-id_imagen_preg('¿Tiene dolor de cabeza y dolor muscular?','ninosDolorMuscular').
-id_imagen_preg('¿Tiene dolor de garganta?','ninoDolorGarganta2').
-id_imagen_preg('¿Tiene goteo nasal?','ninosGoteoNasal').
-id_imagen_preg('¿Tiene tos?','ninosTos').
-id_imagen_preg('¿Tiene fiebre?','ninofiebre').
-id_imagen_preg('¿No tiene apetito?','ninosSinApetito').
-id_imagen_preg('¿Se siente cansado?','ninosCansado').
-
-
-%%%Diagnostico Resfrio - Niños%%%%
-id_imagen_preg('¿Tiene cosquilleo en la garganta?','ninosCosquilleoGarganta').
-id_imagen_preg('¿Tiene congestión o goteo nasal?','ninosCongestion').
-id_imagen_preg('¿Tiene estornudos?','ninosEstornudo').
-id_imagen_preg('¿Tiene un buen apetito?','ninosBuenApetito').
-id_imagen_preg('¿Su fiebre no es muy alta?','ninofiebreBaja').
-id_imagen_preg('¿Su nivel de energía es normal?','ninosBuenaEnergia').
-
-*/
 
 
 %PREGUNTAS PARA EL DIAGNOSTICO NIÑOS
@@ -441,12 +344,17 @@ pregunta('¿Su nivel de energía es normal?').
 %PREGUNTAS PARA DIAGNOSTICO GENERAL
 
 genSiCovid:-general_es_covid,
-pregunta('¿Tiene fiebre?'),
-pregunta('¿Tiene tos seca?'),
-pregunta('¿Se siente cansado?'),
-pregunta('¿Siente dolor en la garganta?'),
-pregunta('¿Siente que esta perdiendo el sentido del gusto?'),
-pregunta('¿Siente que esta perdiendo el sentido del olfato?').
+pregunta('¿Presenta dificultad para respirar?'),
+pregunta('¿Presenta hinchazón en las piernas?'),
+pregunta('¿Ha notado que tiene Latidos cardíacos acelerados o lentos?'),
+pregunta('¿Consume sustancias adictivas?'),
+pregunta('¿Tiene algún defecto congénito?'),
+pregunta('¿Se estresa con frecuencia?'),
+pregunta('¿Lleva una alimentación saludable?'),
+pregunta('¿Realiza deporte en exceso?'),
+pregunta('¿Consume medicamentos en exceso?'),
+pregunta('¿Presenta dolor temporal en el pecho?'),
+pregunta('¿Tiene sensación de mareos o aturdimientos?').
 
 %PREGUNTAS PARA DIAGNOSTICO DE LA GRAVEDAD DEL COVID
 
@@ -479,11 +387,10 @@ es_covid:-pregunta('¿Tiene fiebre más de 37 grados?'),!.
 es_gripe:-pregunta('¿Siente escalofrios?'),!.
 es_resfriado:-pregunta('¿Tiene cosquilleo en la garganta?'),!.
 
-general_es_covid:-pregunta('¿Tiene fiebre?'),!.
+general_es_covid:-pregunta('¿Presenta Fallos Cardiacos? (Falta de impulsos electrico)'),!.
 
-es_leve:-pregunta('¿Tiene fiebre?').
-es_moderada:-pregunta('¿Tiene una saturación de oxígeno (SpO2) = 94%
-en el aire ambiente al nivel del mar?').
+es_leve:-pregunta('¿Presenta Fallos Cardiacos? (Falta de impulsos electrico)').
+es_moderada:-pregunta('¿Tiene una saturación de oxígeno (SpO2) = 94% en el aire ambiente al nivel del mar?').
 es_grave:-pregunta('¿Tiene  frecuencia respiratoria>30 respiraciones por minuto?').
 es_critica:-pregunta('¿Tiene Choque septico?').
 
@@ -492,12 +399,9 @@ es_critica:-pregunta('¿Tiene Choque septico?').
 usuario dice si, se pasa a la siguiente pregunta del mismo ramo, si
 dice que no se pasa a la pregunta del siguiente ramo*/
 
-
 :-dynamic si/1,no/1.
-preguntar(Problema):- new(Di,dialog('Diagnostico sobre COVID-19')),
-new(L2,label(texto,'Responde las siguientes preguntas')),
-/*id_imagen_preg(Problema,Imagen),
-nueva_imagen(Di,Imagen,point(0,0)),*/
+preguntar(Problema):- new(Di,dialog('Diagnostico sobre ARRITMIA CARDIACA')),
+new(L2,label(texto,'Responde las siguientes preguntas:')),
 
 new(La,label(prob,Problema,font('arial','bold',12))),
 new(B1,button(si,and(message(Di,return,si)))),
@@ -519,17 +423,14 @@ write(Answer),send(Di,destroy),
 ((Answer==si)->assert(si(Problema));
 assert(no(Problema)),fail).
 
-
-% cada vez que se conteste una pregunta la pantalla se limpia para
-% volver a preguntar
+% cada vez que se conteste una pregunta la pantalla se limpia para volver a preguntar
 
 pregunta(S):-(si(S)->true; (no(S)->false; preguntar(S))).
 limpiar :- retract(si(_)),fail.
 limpiar :- retract(no(_)),fail.
 limpiar.
 
-% proceso de eleccion de acuerdo al diagnostico basado en las preguntas
-% anteriores
+% proceso de eleccion de acuerdo al diagnostico basado en las preguntas anteriores
 
 botones :- lim,
 enfermedad_ninos(Enfermedad),
@@ -539,7 +440,6 @@ send(@txt2,selection(Enfermedad)),
 limpiar.
 lim :- send(@txt2, selection('')).
 
-
 botones2 :- limp,
 covid_general(Enfermedad),
 send(@txt1,selection('DIAGNÓSTICO:')),
@@ -547,7 +447,6 @@ send(@txt1,colour(green)),
 send(@txt2,selection(Enfermedad)),
 limpiar.
 limp :- send(@txt2, selection('')).
-
 
 botones3 :- limp2,
 gravedad_covid(Enfermedad),
