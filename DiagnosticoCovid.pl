@@ -54,12 +54,12 @@ ventana_inicio:- new(D,dialog('Bienvenido al Sistema Experto Diagnosticador de A
           send(D,display,Texto1,point(60,29)),
           send(D,display,Texto2,point(63,30)),
           send(Texto1,colour(darkred)),
-          send(Texto2,colour(white)),
+          send(Texto2,colour(blue)),
 
           send(D,display,Texto3,point(115,80)),
           send(D,display,Texto4,point(118,81)),
           send(Texto3,colour(black)),
-          send(Texto4,colour(white)),
+          send(Texto4,colour(blue)),
           %send(D,background(red)),
 
           send(D,display,BtnIniciar,point(260,390)),
@@ -117,7 +117,7 @@ ventana_principal:- new(MAIN,dialog('Bienvenido al Sistema Experto Diagnosticado
           new(Texto2,label(name,'SISTEMA EXPERTO - DIAGNOSTICO DE ARRITMIAS CARDIACAS',font('arial','bold',20))),
           new(@txt1,label(name,'ARRITIMIAS CARDIACAS',font('arial','bold',14))),
           new(@txt2,label(name,'                    \n"DIA MUNDIAL DEL CORAZON - 29 DE SEPTIEMBRE " \nLe pedimos que use el corazón para vencer las enfermedades cardiacas. Por la sociedad, por tus seres queridos \ny por ti.',font('arial','bold',12))),
-          new(BtnConsultaGeneral,button('CONSULTA GENERAL__________________',message(@prolog,botones2))),
+          new(BtnConsultaNinos,button('CONSULTA GENERAL__________________',message(@prolog,botones))),
           %new(BtnConsultaNinos,button('TIPO DE ARRITMIA ____________________',message(@prolog,botones))),
           new(BtnPrevencion,button('TIPO DE ARRITMIA ____________________',message(@prolog,botones3))),
           new(BtnProtocolo,button('SUGERENCIAS___________________________',and(message(@prolog,ventana_medidasBioseg_principal),message(MAIN,destroy),
@@ -137,9 +137,10 @@ ventana_principal:- new(MAIN,dialog('Bienvenido al Sistema Experto Diagnosticado
           send(@txt2,colour(white)),
           
           %boton consulta general
-          send(MAIN,display,BtnConsultaGeneral,point(30,240)),
+          
+          send(MAIN,display,BtnConsultaNinos,point(30,240)),
           nueva_imagen(MAIN,iconoIniciar,point(220,242)),
-          send(BtnConsultaGeneral,font(bold)),
+          send(BtnConsultaNinos,font(bold)),
           
           %boton tipo de arritmia
           %send(MAIN,display,BtnConsultaNinos,point(50,205)),
@@ -178,7 +179,7 @@ ventana_medidasBioseg_principal:-new(Dprotocolo,dialog('Sugerencias')),
                    new(BtnVolverInicio,button('_____VOLVER INICIO',and(message(@prolog,ventana_principal),message(Dprotocolo,destroy)))),
                    
                    nueva_imagen(Dprotocolo,fondoMedidas,point(0,0)),
-                    
+
                    %send(Dprotocolo,display,TxtMedTitulo,point(260,30)),
                    %send(TxtMedTitulo,colour(white)),
                    
@@ -265,21 +266,13 @@ ventana_usoGel:-new(DUsoGel,dialog('Correcto Distanciamiento')),
                                  
 %DIAGNOSTICO DE TIPO DE ARRITMIA CARDIACA
 
-enfermedad_ninos('PELIGRO su hijo padece de COVID-19'):-covid,!.
+enfermedad_ninos('\nPELIGRO!!! Usted padece de Arritmias Cardiaca, probablemente causada por Fallos Cardiacos'):-covid,!.
 
-enfermedad_ninos('Su hijo pareciera tener una gripe comun se
-recomienda que visite un centro médico para
-descartar el COVID-19'):-gripe,!.
+enfermedad_ninos('\nPELIGRO!!! Usted padece de Arritmias Cardiaca, probablemente causada por su mal habito de vida'):-gripe,!.
 
-enfermedad_ninos('Su hijo solo tiene un resfriado pero en
-ocasiones también puede ser sintoma del
-COVID-19 se recomienda visitar un centro
-de salud o un especialista.'):-resfriado,!.
+enfermedad_ninos('\nPELIGRO!!! Usted padece de Arritmias Cardiaca, probablemente causada por sus defectos congenitos relacionados con el corazon'):-resfriado,!.
 
-enfermedad_ninos('De haber presentado algunas de los
-sintomas,se recomienda que visite a
-un establecimiento de salud para descartar
-indicios de la COVID 19').
+enfermedad_ninos('De haber presentado algunas de los sintomas,se recomienda que visite a un especialista para descartar indicios de Arritmia Cardiaca').
 
 
 %DIAGNOSTICO GENERAL
@@ -293,55 +286,63 @@ alguna complicación.').
 
 %DIAGNOSTICO GRAVEDAD - COVID19
 
-gravedad_covid('CUIDADO!! TIENE UNA ENFERMEDAD LEVE,
-si está en casa se recomienda
-visitar a un especialista o un establecimineto más
-cercano.'):-covidLeve,!.
+% Bradiarritmias - nivel leve
+gravedad_covid('CUIDADO!! Usted Presenta Bradiarritmias, Categoria de Arritmia de Nivel de Riesgo Moderado. \nSe recomienda que en caso que los sintomas persistan visitar a un especialista'):-covidLeve,!.
 
-gravedad_covid('ADVERTENCIA!! TIENE UNA ENFERMEDAD MODERADA'):-covidModerada,!.
+% Taquiarritmias - nivel considerable
+gravedad_covid('PELIGRO!! Usted Presenta Taquiarritmias, Categoria de Arritmia Cardiaca de Nivel de Riesgo Grave. \nSe recomienda realizar los examenes correspondientes con un especialista, para su posterior tratamiento.'):-covidCritica,!.
+gravedad_covid('\nUsted no presenta sintomas de arritmias cardiacas, pero se le recomienda continuar con los cuidados pertinetes.').
+
+gravedad_covid('Usted no presenta Sintomas de Arritmias cardiacas, se le recomienda continuar con los cuidados pertinetes'):-covidModerada,!.
 
 gravedad_covid('PELIGRO!! TIENE UNA ENFERMEDAD GRAVE'):-covidGrave,!.
 
-gravedad_covid('PELIGRO!! TIENE UNA ENFERMEDAD CRITICA'):-covidCritica,!.
 
-gravedad_covid('De  haber presentado
-algunas de los sintomas,se recomienda
-que visite a un establecimiento de salud
-para su debido tratamiento').
+gravedad_covid('De  haber presentado algunas de los sintomas,se recomienda que visite a un establecimiento de salud para su debido tratamiento').
 
 
 %PREGUNTAS PARA EL DIAGNOSTICO NIÑOS
 
+%es_arrtimia causada por los fallos cardiacos
 covid:- es_covid,
-pregunta('¿Tiene fiebre más de 37 grados?'),
-pregunta('¿Tiene dolor de cabeza?'),
-pregunta('¿Tiene dolor de garganta?'),
-pregunta('¿Tiene problemas de respiración?'),
-pregunta('¿Siente perdida del sentido del gusto?'),
-pregunta('¿Siente perdida del sentido del olfato?'),
-pregunta('¿Tiene diarrea?'),
-pregunta('¿Tiene tos seca?'),
-pregunta('¿Tiene conjuntivitis?').
-
-gripe:-es_gripe,
-pregunta('¿Siente escalofrios?'),
-pregunta('¿Tiene dolor de cabeza y dolor muscular?'),
-pregunta('¿Tiene dolor de garganta?'),
-pregunta('¿Tiene goteo nasal?'),
-pregunta('¿Tiene tos?'),
-pregunta('¿Tiene fiebre?'),
-pregunta('¿No tiene apetito?'),
+pregunta('¿Ha notado que tiene Latidos cardíacos acelerados o lentos?'),
+pregunta('¿Presenta dificultad para respirar con frecuencia?'),
+pregunta('¿Presenta hinchazón en las piernas?'),
+pregunta('¿Presenta dolor temporal en el pecho con regularidad?'),
+pregunta('¿Tiene sensación de mareos o aturdimientos?'),
 pregunta('¿Se siente cansado?').
 
-resfriado:-es_resfriado,
-pregunta('¿Tiene cosquilleo en la garganta?'),
-pregunta('¿Tiene congestión o goteo nasal?'),
-pregunta('¿Tiene estornudos?'),
-pregunta('¿Tiene un buen apetito?'),
-pregunta('¿Su fiebre no es muy alta?'),
-pregunta('¿Su nivel de energía es normal?').
+%pregunta('¿Tiene problemas de respiración?'),
+%pregunta('¿Siente perdida del sentido del gusto?'),
+%pregunta('¿Siente perdida del sentido del olfato?'),
+%pregunta('¿Tiene diarrea?'),
+%pregunta('¿Tiene tos seca?'),
+%pregunta('¿Tiene conjuntivitis?').
 
-%PREGUNTAS PARA DIAGNOSTICO GENERAL
+%es_arritmia causada por la mala vida cotidiana
+gripe:-es_gripe,
+
+pregunta('¿Se estresa con frecuencia?'),
+pregunta('¿No lleva una alimentación saludable?'),
+pregunta('¿Consume medicamentos en exceso?'),
+pregunta('¿Consume sustancias adictivas?'),
+pregunta('¿Realiza deporte en exceso?'),
+pregunta('¿Presenta Sudoración de manera frecuente?'),
+pregunta('¿Ha sufrido de desmayos o desvanecimiento?').
+
+%es_arritmia causa por los dfectos congnenitos
+resfriado:-es_resfriado,
+pregunta('¿Tiene algún defecto congénito relacionado con el corazón?'),
+pregunta('¿Algún familiar ha tenido antecedentes de arritmia cardíaca o alguna enfermedad coronaria?').
+pregunta('¿Se estresa con frecuencia?'),
+pregunta('¿No lleva una alimentación saludable?'),
+pregunta('¿Consume medicamentos en exceso?'),
+pregunta('¿Consume sustancias adictivas?'),
+pregunta('¿Realiza deporte en exceso?').
+
+
+
+%PREGUNTAS PARA DIAGNOSTICO GENERAL arritmia
 
 genSiCovid:-general_es_covid,
 pregunta('¿Presenta dificultad para respirar?'),
@@ -358,43 +359,48 @@ pregunta('¿Tiene sensación de mareos o aturdimientos?').
 
 %PREGUNTAS PARA DIAGNOSTICO DE LA GRAVEDAD DEL COVID
 
+%Bradiarritmias
 covidLeve:-es_leve,
-pregunta('¿Tiene fiebre?'),
-pregunta('¿Tine tos seca?'),
-pregunta('¿Se siente cansado?'),
-pregunta('¿Siente dolor en la garganta?'),
-pregunta('¿Siente que esta perdiendo el sentido del gusto?'),
-pregunta('¿Siente que esta perdiendo el sentido del olfato?').
+pregunta('¿Siente que su corazon late demadiado lento?'),
+pregunta('¿Siente que pierde la memoria con facilidad?'),
+pregunta('¿Usa farmacos como la Atropina o la Adrenalina, entre otros?').
+%pregunta('¿Siente dolor en la garganta?'),
+%pregunta('¿Siente que esta perdiendo el sentido del gusto?'),
+%pregunta('¿Siente que esta perdiendo el sentido del olfato?').
 
-covidModerada:-es_moderada,
-pregunta('¿Tiene una saturación de oxígeno (SpO2) = 94%
-en el aire ambiente al nivel del mar?').
 
-covidGrave:-es_grave,
-pregunta('¿Tiene  frecuencia respiratoria>30 respiraciones por minuto?'),
-pregunta('¿Su SpO2<94% en el aire ambiente al nivel del mar?'),
-pregunta('¿(PaO2 / FiO2) < 300 mmHg o infiltrados pulmonares > 50%?').
-
+%Taquicardia
 covidCritica:-es_critica,
-pregunta('¿Tiene Choque septico?'),
-pregunta('¿Sufre de insuficiencia Respiratoria?'),
-pregunta('¿Tiene disfunción multiorgánica?').
+pregunta('¿Siente que su corazon late demadiado acelerado?'),
+pregunta('¿Sufre Sudoracion excesiva de manera repentina?'),
+pregunta('¿Sufre ansiedad de manera frecuente?').
+
+%covidModerada:-es_moderada,
+%pregunta('¿Tiene una saturación de oxígeno (SpO2) = 94%
+%en el aire ambiente al nivel del mar?').
+
+%covidGrave:-es_grave,
+%pregunta('¿Tiene  frecuencia respiratoria>30 respiraciones por minuto?'),
+%pregunta('¿Su SpO2<94% en el aire ambiente al nivel del mar?'),
+%pregunta('¿(PaO2 / FiO2) < 300 mmHg o infiltrados pulmonares > 50%?').
 
 
 %identificador de enfermedad que dirige a las preguntas correspondientes
 
-es_covid:-pregunta('¿Tiene fiebre más de 37 grados?'),!.
-es_gripe:-pregunta('¿Siente escalofrios?'),!.
-es_resfriado:-pregunta('¿Tiene cosquilleo en la garganta?'),!.
+es_covid:-pregunta('¿Ha notado que tiene Latidos cardíacos acelerados o lentos?'),!.
+es_gripe:-pregunta('¿Se estresa con frecuencia?'),!.
+es_resfriado:-pregunta('¿Tiene algún defecto congénito relacionado con el corazón?'),!.
 
 general_es_covid:-pregunta('¿Presenta Fallos Cardiacos? (Falta de impulsos electrico)'),!.
 
-es_leve:-pregunta('¿Presenta Fallos Cardiacos? (Falta de impulsos electrico)').
-es_moderada:-pregunta('¿Tiene una saturación de oxígeno (SpO2) = 94% en el aire ambiente al nivel del mar?').
-es_grave:-pregunta('¿Tiene  frecuencia respiratoria>30 respiraciones por minuto?').
-es_critica:-pregunta('¿Tiene Choque septico?').
+es_leve:-pregunta('¿Siente que su corazon late demadiado lento?').
+es_critica:-pregunta('¿Siente que su corazon late demadiado acelerado?').
+%es_moderada:-pregunta('¿Tiene una saturación de oxígeno (SpO2) = 94% en el aire ambiente al nivel del mar?').
+%es_grave:-pregunta('¿Tiene  frecuencia respiratoria>30 respiraciones por minuto?').
 
 
+
+/***********************************************************************************************************************************************************************/
 /*proceso del diagnostico basado en preguntas de si y no, cuando el
 usuario dice si, se pasa a la siguiente pregunta del mismo ramo, si
 dice que no se pasa a la pregunta del siguiente ramo*/
@@ -402,8 +408,8 @@ dice que no se pasa a la pregunta del siguiente ramo*/
 :-dynamic si/1,no/1.
 preguntar(Problema):- new(Di,dialog('Diagnostico sobre ARRITMIA CARDIACA')),
 new(L2,label(texto,'Responde las siguientes preguntas:')),
-
 new(La,label(prob,Problema,font('arial','bold',12))),
+
 new(B1,button(si,and(message(Di,return,si)))),
 new(B2,button(no,and(message(Di,return,no)))),
 
@@ -420,8 +426,7 @@ send(Di,append(B2)),
 send(Di,default_button,si),
 send(Di,open_centered),get(Di,confirm,Answer),
 write(Answer),send(Di,destroy),
-((Answer==si)->assert(si(Problema));
-assert(no(Problema)),fail).
+((Answer==si)->assert(si(Problema)); assert(no(Problema)),fail).
 
 % cada vez que se conteste una pregunta la pantalla se limpia para volver a preguntar
 
@@ -435,7 +440,7 @@ limpiar.
 botones :- lim,
 enfermedad_ninos(Enfermedad),
 send(@txt1,selection('DIAGNÓSTICO:')),
-send(@txt1,colour(green)),
+send(@txt1,colour(red)),
 send(@txt2,selection(Enfermedad)),
 limpiar.
 lim :- send(@txt2, selection('')).
@@ -443,7 +448,7 @@ lim :- send(@txt2, selection('')).
 botones2 :- limp,
 covid_general(Enfermedad),
 send(@txt1,selection('DIAGNÓSTICO:')),
-send(@txt1,colour(green)),
+send(@txt1,colour(red)),
 send(@txt2,selection(Enfermedad)),
 limpiar.
 limp :- send(@txt2, selection('')).
@@ -451,7 +456,7 @@ limp :- send(@txt2, selection('')).
 botones3 :- limp2,
 gravedad_covid(Enfermedad),
 send(@txt1,selection('DIAGNÓSTICO:')),
-send(@txt1,colour(green)),
+send(@txt1,colour(red)),
 send(@txt2,selection(Enfermedad)),
 limpiar.
 limp2:- send(@txt2, selection('')).
