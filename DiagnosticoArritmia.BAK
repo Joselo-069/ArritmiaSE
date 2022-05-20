@@ -34,40 +34,40 @@ nueva_imagen(Ventana, Imagen, Posicion):-new(Figura,  figure),
 % Metodo principal para iniciar la interfaz grafica, declaracion de
 % botones, labels, y la pocicion en pantalla.
 
-ventana_inicio:- new(D,dialog('Bienvenido al Sistema Experto Diagnosticador de Arritmias Cardicas')),
-          new(Texto1,label(name,'SISTEMA EXPERTO DIAGNOSTICO DE ARRITMIA CARDIACAS',font('arial','bold',18))),
-          new(Texto2,label(name,'SISTEMA EXPERTO DIAGNOSTICO DE ARRITMIA CARDIACAS',font('arial','bold',18))),
-          new(Texto3,label(name,'    UNIVERSIDAD NACIONAL SANTIAGO\n                  ANTUNEZ DE MAYOLO \n\n\n\n\n
-                FACULTAD DE CIENCIAS \n ESCUELA  PROFESIONAL DE INGENIERIA \n          DE SISTEMAS E INFORMÁTICA',font('arial','bold',20))),
-          new(Texto4,label(name,'    UNIVERSIDAD NACIONAL SANTIAGO\n                  ANTUNEZ DE MAYOLO \n\n\n\n\n
-                FACULTAD DE CIENCIAS \n ESCUELA  PROFESIONAL DE INGENIERIA \n          DE SISTEMAS E INFORMÁTICA',font('arial','bold',20))),
+ventana_inicio:- new(D,dialog('Sistema Experto Diagnosticador de Arritmias Cardicas')),
+          %new(Texto1,label(name,'SISTEMA EXPERTO DIAGNOSTICO DE ARRITMIA CARDIACAS',font('arial','bold',18))),
+          %new(Texto2,label(name,'SISTEMA EXPERTO DIAGNOSTICO DE ARRITMIA CARDIACAS',font('arial','bold',18))),
+          %new(Texto3,label(name,'    UNIVERSIDAD NACIONAL SANTIAGO\n                  ANTUNEZ DE MAYOLO \n\n\n\n\n
+           %     FACULTAD DE CIENCIAS \n ESCUELA  PROFESIONAL DE INGENIERIA \n          DE SISTEMAS E INFORMÁTICA',font('arial','bold',20))),
+          %new(Texto4,label(name,'    UNIVERSIDAD NACIONAL SANTIAGO\n                  ANTUNEZ DE MAYOLO \n\n\n\n\n
+          % FACULTAD DE CIENCIAS \n ESCUELA  PROFESIONAL DE INGENIERIA \n          DE SISTEMAS E INFORMÁTICA',font('arial','bold',20))),
           new(BtnIniciar,button('INICIAR ____',and(message(@prolog,ventana_principal),message(D,destroy)))),
           new(BtnSalir1,button('SALIR____',and(message(D,destroy)))),
           
           nueva_imagen(D,fondo,point(0,0)),
           
-          send(D,display,Texto1,point(60,29)),
-          send(D,display,Texto2,point(63,30)),
-          send(Texto1,colour(darkred)),
-          send(Texto2,colour(blue)),
+          %send(D,display,Texto1,point(60,29)),
+          %send(D,display,Texto2,point(63,30)),
+          %send(Texto1,colour(darkred)),
+          %send(Texto2,colour(blue)),
 
-          send(D,display,Texto3,point(115,80)),
-          send(D,display,Texto4,point(118,81)),
-          send(Texto3,colour(black)),
-          send(Texto4,colour(blue)),
+          %send(D,display,Texto3,point(115,80)),
+          %send(D,display,Texto4,point(118,81)),
+          %send(Texto3,colour(black)),
+          %send(Texto4,colour(blue)),
           %send(D,background(red)),
 
-          send(D,display,BtnIniciar,point(260,390)),
-          nueva_imagen(D,iconoSiguiente,point(320,391)),
+          send(D,display,BtnIniciar,point(560,390)),
+          nueva_imagen(D,iconoSiguiente,point(620,391)),
           send(BtnIniciar,font(bold)),
 
-          send(D,display,BtnSalir1,point(360,392)),
-          nueva_imagen(D,iconoSalir,point(420,395)),
+          send(D,display,BtnSalir1,point(800,392)),
+          nueva_imagen(D,iconoSalir,point(860,395)),
           send(BtnSalir1,font(bold)),
 
           
-          send(D,height(450)),
-          send(D,width(720)),
+          send(D,height(600)),
+          send(D,width(950)),
           send(D,open_centered).
           :-ventana_inicio.
           
@@ -75,10 +75,10 @@ ventana_inicio:- new(D,dialog('Bienvenido al Sistema Experto Diagnosticador de A
 
 ventana_principal:- new(MAIN,dialog('Bienvenido al Sistema Experto Diagnosticador de Arritmias Cardiacas')),
 
-          new(Texto1,label(name,'SISTEMA EXPERTO - DIAGNOSTICO DE ARRITMIAS CARDIACAS',font('arial','bold',20))),
-          new(Texto2,label(name,'SISTEMA EXPERTO - DIAGNOSTICO DE ARRITMIAS CARDIACAS',font('arial','bold',20))),
-          new(@txt1,label(name,'ARRITIMIAS CARDIACAS',font('arial','bold',14))),
-          new(@txt2,label(name,'                    \n"DIA MUNDIAL DEL CORAZON - 29 DE SEPTIEMBRE " \nLe pedimos que use el corazón para vencer las enfermedades cardiacas. Por la sociedad, por tus seres queridos \ny por ti.',font('arial','bold',12))),
+          new(Texto1,label(name,'SISTEMA EXPERTO - DIAGNOSTICO DE ARRITMIAS CARDIACAS',font('arial','bold',23))),
+          new(Texto2,label(name,'SISTEMA EXPERTO - DIAGNOSTICO DE ARRITMIAS CARDIACAS',font('arial','bold',23))),
+          new(@txt1,label(name,'ARRITIMIAS CARDIACAS',font('arial','bold',16))),
+          new(@txt2,label(name,'                    \n"DIA MUNDIAL DEL CORAZON - 29 DE SEPTIEMBRE " \nLe pedimos que use el corazón para vencer las enfermedades cardiacas. Por la sociedad, por tus seres queridos \ny por ti.',font('arial','bold',14))),
           new(BtnConsultaNinos,button('CONSULTA GENERAL__________________',message(@prolog,botones))),
           %new(BtnConsultaNinos,button('TIPO DE ARRITMIA ____________________',message(@prolog,botones))),
           new(BtnPrevencion,button('TIPO DE ARRITMIA ____________________',message(@prolog,botones3))),
@@ -88,40 +88,40 @@ ventana_principal:- new(MAIN,dialog('Bienvenido al Sistema Experto Diagnosticado
 
           nueva_imagen(MAIN,fondo2,point(0,0)),
 
-          send(MAIN,display,Texto1,point(30,31)),
-          send(MAIN,display,Texto2,point(30,30)),
+          send(MAIN,display,Texto1,point(50,31)),
+          send(MAIN,display,Texto2,point(50,30)),
           send(Texto1,colour(darkred)),
           send(Texto2,colour(white)),
 
-          send(MAIN,display,@txt1,point(320,105)),
+          send(MAIN,display,@txt1,point(360,105)),
           send(MAIN,display,@txt2,point(50,130)),
           send(@txt1,colour(white)),
           send(@txt2,colour(white)),
           
           %boton consulta general
           
-          send(MAIN,display,BtnConsultaNinos,point(30,240)),
-          nueva_imagen(MAIN,iconoIniciar,point(220,242)),
+          send(MAIN,display,BtnConsultaNinos,point(90,260)),
+          nueva_imagen(MAIN,iconoIniciar,point(280,262)),
           send(BtnConsultaNinos,font(bold)),
 
           %boton tipo de arritmia
-          send(MAIN,display,BtnPrevencion,point(280,240)),
-          nueva_imagen(MAIN,iconoIniciar,point(472,242)),
+          send(MAIN,display,BtnPrevencion,point(360,260)),
+          nueva_imagen(MAIN,iconoIniciar,point(552,262)),
           send(BtnPrevencion,font(bold)),
 
           %boton de sugerecias
-          send(MAIN,display,BtnProtocolo,point(530,240)),
-          nueva_imagen(MAIN,iconoIniciar,point(720,242)),
+          send(MAIN,display,BtnProtocolo,point(630,260)),
+          nueva_imagen(MAIN,iconoIniciar,point(820,262)),
           send(BtnProtocolo,font(bold)),
 
-          %boton de sugerecias
-          send(MAIN,display,BtnSalir2,point(30,520)),
-          nueva_imagen(MAIN,iconoSalir,point(225,522)),
+          %boton de salir
+          send(MAIN,display,BtnSalir2,point(70,560)),
+          nueva_imagen(MAIN,iconoSalir,point(265,562)),
           send(BtnSalir2,colour(red)),
           send(BtnSalir2,font(bold)),
           
-          send(MAIN,height(550)),
-          send(MAIN,width(800)),
+          send(MAIN,height(600)),
+          send(MAIN,width(950)),
           send(MAIN,open_centered).
           
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -133,26 +133,26 @@ ventana_medidasBioseg_principal:-new(Dprotocolo,dialog('Sugerencias')),
                    new(BtnMedMascarilla,button('RECOMENDACIONES_______________',and(message(@prolog,ventana_usoMascarilla),message(Dprotocolo,destroy)))),
                    %new(BtnMedDistancia,button('Distanciamiento______________________',and(message(@prolog,ventana_Distanciamiento),message(Dprotocolo,destroy)))),
                    %new(BtnGel,button('Alcohol y Gel__________________________',and(message(@prolog,ventana_usoGel),message(Dprotocolo,destroy)))),
-                   new(BtnVolverInicio,button('_____VOLVER INICIO',and(message(@prolog,ventana_principal),message(Dprotocolo,destroy)))),
+                   new(BtnVolverInicio,button('___VOLVER INICIO',and(message(@prolog,ventana_principal),message(Dprotocolo,destroy)))),
                    
                    nueva_imagen(Dprotocolo,fondoMedidas,point(0,0)),
                    
-                   send(Dprotocolo,display,BtnMedManos,point(40,200)),
+                   send(Dprotocolo,display,BtnMedManos,point(60,200)),
                    send(BtnMedManos,font(bold)),
-                   send(Dprotocolo,display,BtnMedMascarilla,point(40,300)),
+                   send(Dprotocolo,display,BtnMedMascarilla,point(60,300)),
                    send(BtnMedMascarilla,font(bold)),
 
-                   send(Dprotocolo,display,BtnVolverInicio,point(45,50)),
+                   send(Dprotocolo,display,BtnVolverInicio,point(60,50)),
                    send(BtnVolverInicio,font(bold)),
                    send(BtnVolverInicio,colour(black)),
                    
-                   nueva_imagen(Dprotocolo,iconoSalir,point(45,52)),
+                   nueva_imagen(Dprotocolo,iconoSalir,point(60,52)),
                    
-                   nueva_imagen(Dprotocolo,iconoIniciar,point(217,201)),
-                   nueva_imagen(Dprotocolo,iconoIniciar,point(217,301)),
+                   nueva_imagen(Dprotocolo,iconoIniciar,point(237,201)),
+                   nueva_imagen(Dprotocolo,iconoIniciar,point(237,301)),
                    
-                   send(Dprotocolo,height(550)),
-                   send(Dprotocolo,width(800)),
+                   send(Dprotocolo,height(600)),
+                   send(Dprotocolo,width(950)),
                    send(Dprotocolo,open_centered).
 %PREVENCION
 
@@ -164,8 +164,8 @@ ventana_lavadoMano:-new(DLavadoMano,dialog('Lavado correcto de las manos')),
                     send(DLavadoMano,display,BtnVolverInicio2,point(70,513)),
                     nueva_imagen(DLavadoMano,iconoAtras,point(75,515)),
                     
-                    send(DLavadoMano,width(800)),
-                    send(DLavadoMano,height(550)),
+                    send(DLavadoMano,width(950)),
+                    send(DLavadoMano,height(600)),
                     send(DLavadoMano,open_centered).
                     
                     
@@ -179,8 +179,8 @@ ventana_Distanciamiento:-new(Ddistanciamiento,dialog('Correcto Distanciamiento')
                     send(Ddistanciamiento,display,BtnVolverInicio3,point(70,513)),
                     nueva_imagen(Ddistanciamiento,iconoAtras,point(75,515)),
 
-                    send(Ddistanciamiento,width(800)),
-                    send(Ddistanciamiento,height(550)),
+                    send(Ddistanciamiento,width(950)),
+                    send(Ddistanciamiento,height(600)),
                     send(Ddistanciamiento,open_centered).
 
 
@@ -194,8 +194,8 @@ ventana_usoMascarilla:-new(DUsoMascarilla,dialog('Correcto Distanciamiento')),
                     send(DUsoMascarilla,display,BtnVolverInicio3,point(70,513)),
                     nueva_imagen(DUsoMascarilla,iconoAtras,point(75,515)),
                     
-                    send(DUsoMascarilla,width(800)),
-                    send(DUsoMascarilla,height(550)),
+                    send(DUsoMascarilla,width(950)),
+                    send(DUsoMascarilla,height(600)),
                     send(DUsoMascarilla,open_centered).
 
 %CORRECTO  USO DEL ALCOHOL Y GEL
@@ -208,19 +208,19 @@ ventana_usoGel:-new(DUsoGel,dialog('Correcto Distanciamiento')),
                     send(DUsoGel,display,BtnVolverInicio3,point(70,513)),
                     nueva_imagen(DUsoGel,iconoAtras,point(75,515)),
 
-                    send(DUsoGel,width(800)),
-                    send(DUsoGel,height(550)),
+                    send(DUsoGel,width(950)),
+                    send(DUsoGel,height(600)),
                     send(DUsoGel,open_centered).
                                  
 %DIAGNOSTICO DE TIPO DE ARRITMIA CARDIACA
 
-enfermedad_corazon('\nPELIGRO!!! Usted padece de Arritmias Cardiaca'):-covid,!.
+enfermedad_corazon('\nPELIGRO!!! \nResultado: Usted padece de Arritmias Cardiaca'):-covid,!.
 
-enfermedad_corazon('\nPELIGRO!!! Usted padece de Arritmias Cardiaca'):-gripe,!.
+enfermedad_corazon('\nPELIGRO!!! \nResultado: Usted padece de Arritmias Cardiaca'):-gripe,!.
 
-enfermedad_corazon('\nPELIGRO!!! Usted padece de Arritmias Cardiaca'):-resfriado,!.
+enfermedad_corazon('\nPELIGRO!!! \nResultado: Usted padece de Arritmias Cardiaca'):-resfriado,!.
 
-enfermedad_corazon('De haber presentado algunas de los sintomas,se recomienda que visite a un especialista para descartar \nindicios de Arritmia Cardiaca').
+enfermedad_corazon('Resultado: Usted no presenta Arritmia Cardiaca, \nRecomendacion:De haber presentado algunas de los sintomas.Se recomienda que visite a un especialista para descartar \nindicios de Arritmia Cardiaca').
 
 
 %DIAGNOSTICO GENERAL
@@ -235,18 +235,18 @@ alguna complicación.').
 %DIAGNOSTICO CATEGORIA DE ARRITMIA CARDIACA
 
 % Bradiarritmias - nivel leve
-gravedad_corazon('CUIDADO!! Usted Presenta Bradiarritmias, Categoria de Arritmia de Nivel de Riesgo Moderado. \nSe recomienda que en caso que los sintomas persistan visitar a un especialista'):-covidLeve,!.
+gravedad_corazon('CUIDADO!! \nUsted Presenta: Bradiarritmias. \nCategoria de Arritmia: Nivel de Riesgo Moderado. \nRecomendacion: Se recomienda que en caso que los sintomas empeoren, debe visitar a un especialista'):-covidLeve,!.
 
 % Taquiarritmias - nivel considerable
-gravedad_corazon('PELIGRO!! Usted Presenta Taquiarritmias, Categoria de Arritmia Cardiaca de Nivel de Riesgo Grave. \nSe recomienda realizar los examenes correspondientes con un especialista, para su posterior tratamiento.'):-covidCritica,!.
-gravedad_corazon('\nUsted no presenta sintomas de arritmias cardiacas, pero se le recomienda continuar con los cuidados pertinetes.').
+gravedad_corazon('PELIGRO!! \nUsted Presenta: Taquiarritmias. \nCategoria de Arritmia: Nivel de Riesgo Grave. \nRecomendacion: Se recomienda realizar los examenes correspondientes, para su posterior tratamiento.'):-covidCritica,!.
+gravedad_corazon('Usted presenta sintomas de Arritmia de Nivel Leve, pero se le recomienda continuar con los cuidados pertinetes.').
 
-gravedad_corazon('Usted no presenta Sintomas de Arritmias cardiacas, se le recomienda continuar con los cuidados pertinetes'):-covidModerada,!.
+gravedad_corazon('\n\nUsted no presenta Sintomas de Arritmias cardiacas, se le recomienda continuar con los cuidados pertinetes'):-covidModerada,!.
 
-gravedad_corazon('PELIGRO!! TIENE UNA ENFERMEDAD GRAVE'):-covidGrave,!.
+gravedad_corazon('\nPELIGRO!! TIENE UNA ENFERMEDAD GRAVE'):-covidGrave,!.
 
 
-gravedad_corazon('De  haber presentado algunas de los sintomas,se recomienda que visite a un establecimiento de salud para su debido tratamiento').
+gravedad_corazon('\nDe haber presentado algunas de los sintomas,se recomienda que visite a un establecimiento de salud para su debido tratamiento').
 
 
 %PREGUNTAS PARA EL DIAGNOSTICO NIÑOS
@@ -256,10 +256,8 @@ covid:- es_covid,
 pregunta('¿Ha notado que tiene Latidos cardíacos acelerados o lentos?'),
 pregunta('¿Presenta dificultad para respirar con frecuencia?'),
 pregunta('¿Presenta hinchazón en las piernas?'),
-pregunta('¿Presenta dolor temporal en el pecho con regularidad?'),
-pregunta('¿Tiene sensación de mareos o aturdimientos?'),
-pregunta('¿Se siente cansado?').
-
+pregunta('¿Presenta dolor temporal en el pecho?'),
+pregunta('¿Tiene sensación de mareos o aturdimientos?').
 
 %es_arritmia causada por la mala vida cotidiana
 gripe:-es_gripe,
@@ -268,14 +266,12 @@ pregunta('¿Se estresa con frecuencia?'),
 pregunta('¿No lleva una alimentación saludable?'),
 pregunta('¿Consume medicamentos en exceso?'),
 pregunta('¿Consume sustancias adictivas?'),
-pregunta('¿Realiza deporte en exceso?'),
-pregunta('¿Presenta Sudoración de manera frecuente?'),
-pregunta('¿Ha sufrido de desmayos o desvanecimiento?').
+pregunta('¿Sufre de desmayos o desvanecimiento con regularidad?').
 
 %es_arritmia causa por los dfectos congnenitos
 resfriado:-es_resfriado,
 pregunta('¿Tiene algún defecto congénito relacionado con el corazón?'),
-pregunta('¿Algún familiar ha tenido antecedentes de arritmia cardíaca o alguna enfermedad coronaria?'),
+pregunta('¿Algún familiar tiene antecedentes de problemas del corazon?'),
 pregunta('¿Se estresa con frecuencia?'),
 pregunta('¿No lleva una alimentación saludable?'),
 pregunta('¿Consume medicamentos en exceso?'),
